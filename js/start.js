@@ -4,6 +4,8 @@ $(document).ready(() => {
   <div class="screen screen-start" id="start">
   <header>
     <h1>Tic Tac Toe</h1>
+    </br>
+    <input type='text' placeholder='Name Of Player'></input></br></br>
     <a href="#" class="button">Start game</a>
   </header>
 </div>`;
@@ -13,6 +15,10 @@ $(document).ready(() => {
 
   //Change page to tic-tac-toe screen when 'Start Game' is clicked.
   $(".button").on("click", () => {
+    if($('input').val()===''
+    ){
+      return false;
+    }
     html = `
 <div class="board" id="board">
   <header>
