@@ -4,6 +4,8 @@ $(document).ready(() => {
 
   //On Page load, load up the start up screen.
 
+   //-----------------------------------------
+  //NEW GAME CODE
   $("body").on("click", "a.button", () => {
     //Display New Game.
     var val = localStorage.getItem("bar");
@@ -26,6 +28,5 @@ $(document).ready(() => {
     $("body").html(html);
     $("#player1").addClass("active");
 
-    
   });
 });
