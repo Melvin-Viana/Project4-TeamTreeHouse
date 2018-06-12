@@ -8,8 +8,8 @@ $(document).ready(() => {
   //NEW GAME CODE
   $("body").on("click", "a.button", () => {
     //Display New Game.
-    var val = localStorage.getItem("bar");
-    var html = `
+    let val = localStorage.getItem("bar");
+    let html = `
       <div class="board" id="board">
         <header>
           <h1>Tic Tac Toe</h1>

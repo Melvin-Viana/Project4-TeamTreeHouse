@@ -129,7 +129,7 @@ dfn {
 }
 
 /**
- * Address variable `h1` font-size and margin within `section` and `article`
+ * Address letiable `h1` font-size and margin within `section` and `article`
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 
@@ -148,7 +148,7 @@ mark {
 }
 
 /**
- * Address inconsistent and variable font size in all browsers.
+ * Address inconsistent and letiable font size in all browsers.
  */
 
 small {

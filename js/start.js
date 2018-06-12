@@ -1,6 +1,6 @@
 $(document).ready(() => {
-  //Variable that holds the html for startup screen.
-  var html = `
+  //letiable that holds the html for startup screen.
+  let html = `
   <div class="screen screen-start" id="start">
   <header>
     <h1>Tic Tac Toe</h1>
@@ -15,7 +15,7 @@ $(document).ready(() => {
 
   //Change page to tic-tac-toe screen when 'Start Game' is clicked.
   $(".button").on("click", () => {
-    var val = $("input").val();
+    let val = $("input").val();
     if ($("input").val() === "") {
       alert("Enter your name before playing.");
       return false;

@@ -1,9 +1,9 @@
 //Code for game
 $(document).ready(() => {
-  var arrPlayer1 = [];
-  var arrPlayer2 = [];
+  let arrPlayer1 = [];
+  let arrPlayer2 = [];
   //This array holds the possible index combinations of victory.
-  var win = [
+  let win = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -14,14 +14,13 @@ $(document).ready(() => {
     [2, 4, 6]
   ];
   let turnCounter =0;
-    //Boolean for whether there is a winner or it's a tie
-    let boolWin;
   //Holds whoever turn is it.
-  var playerTurn = 1;
+  let playerTurn = 1;
   //Empty squares/ Not yet filled
   let emptySquares =[0,1,2,3,4,5,6,7,8];
+  
   //Display who won the game
-  function declareTheWinner(player,message,boolWinner){
+  function declareTheWinner(player,message){
     $('body').html(`<div class="screen screen-win screen-win-${player}" id="finish">
     <header>
       <h1>Tic Tac Toe</h1>
@@ -37,7 +36,7 @@ $(document).ready(() => {
   }
 
   function turn(element,player,index){
-       //Variables find if the current index for the li items are within the arrays.
+       //letiables find if the current index for the li items are within the arrays.
        let inArray1 = $.inArray(index, arrPlayer1); //$.inArray; https://api.jquery.com/jQuery.inArray/
        let inArray2 = $.inArray(index, arrPlayer2);
        let emptySquaresIndex = emptySquares.indexOf(index);
@@ -118,10 +117,10 @@ $(document).ready(() => {
         }
         if (player1Counter === 3) {
           //Display O as Winner          
-         declareTheWinner('one','Winner',true);
+         declareTheWinner('one','Winner');
         } else if (player2Counter === 3) {
           //Display X as Winner
-          declareTheWinner('two','Winner',true);
+          declareTheWinner('two','Winner');
 
         }
       }
@@ -129,7 +128,7 @@ $(document).ready(() => {
     console.log(emptySquares);
     if (emptySquares.length===0) {
               //Display Draw Screen
-              declareTheWinner('tie','Tie',false);
+              declareTheWinner('tie','Tie');
     }
   });
 });
