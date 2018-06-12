@@ -115,15 +115,17 @@ $(document).ready(() => {
         //Check if arrPlayer1 has one of the winning combos
         if ($.inArray(win[i][j], arrPlayer1) !== -1) {
           player1Counter++;
-        }//Check if arrPlayer1 has one of the winning combos
+        }//Check if arrPlayer2 has one or more number in the current combo
         else if ($.inArray(win[i][j], arrPlayer2) !== -1) {
           player2Counter++;
         }
-
+        // if Player 1 has 3 numbers of the current combo.
         if (player1Counter === 3) {
           //Display O as Winner
           declareTheWinner("one", "Winner");
-        } else if (player2Counter === 3) {
+        } 
+         // if Player 2 has 3 numbers of the current combo.
+        else if (player2Counter === 3) {
           //Display X as Winner
           declareTheWinner("two", "Winner");
         }
