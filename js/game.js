@@ -13,15 +13,16 @@ $(document).ready(() => {
     [0, 4, 8],
     [2, 4, 6]
   ];
-  let turnCounter =0;
+  let turnCounter = 0;
   //Holds whoever turn is it.
   let playerTurn = 1;
   //Empty squares/ Not yet filled
-  let emptySquares =[0,1,2,3,4,5,6,7,8];
-  
+  let emptySquares = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
   //Display who won the game
-  function declareTheWinner(player,message){
-    $('body').html(`<div class="screen screen-win screen-win-${player}" id="finish">
+  function declareTheWinner(player, message) {
+    $("body")
+      .html(`<div class="screen screen-win screen-win-${player}" id="finish">
     <header>
       <h1>Tic Tac Toe</h1>
       <p class="message">${message}</p>
@@ -31,36 +32,34 @@ $(document).ready(() => {
     arrPlayer1 = [];
     arrPlayer2 = [];
     playerTurn = 1;
-    turnCounter=0;
-    emptySquares =[0,1,2,3,4,5,6,7,8];
+    turnCounter = 0;
+    emptySquares = [0, 1, 2, 3, 4, 5, 6, 7, 8];
   }
 
-  function turn(element,player,index){
-       //letiables find if the current index for the li items are within the arrays.
-       let inArray1 = $.inArray(index, arrPlayer1); //$.inArray; https://api.jquery.com/jQuery.inArray/
-       let inArray2 = $.inArray(index, arrPlayer2);
-       let emptySquaresIndex = emptySquares.indexOf(index);
+  function turn(element, player, index) {
+    //letiables find if the current index for the li items are within the arrays.
+    let inArray1 = $.inArray(index, arrPlayer1); //$.inArray; https://api.jquery.com/jQuery.inArray/
+    let inArray2 = $.inArray(index, arrPlayer2);
+    let emptySquaresIndex = emptySquares.indexOf(index);
 
-    if (emptySquaresIndex!==-1) {
+    if (emptySquaresIndex !== -1) {
       //Place the index of chosen box into an array of corresponding player.
       playerTurn === 1 ? arrPlayer1.push(index) : arrPlayer2.push(index);
-      emptySquares.splice(emptySquaresIndex,1);
+      emptySquares.splice(emptySquaresIndex, 1);
 
       //   //Add box-filled css for selected box.
       element.addClass("box-filled-" + playerTurn);
-    // Remove active class from previous turn.
-    $(`#player${playerTurn}`).removeClass("active");
-      
-    //Change turns.
-    playerTurn === 1 ? (playerTurn = 2) : (playerTurn = 1);
+      // Remove active class from previous turn.
+      $(`#player${playerTurn}`).removeClass("active");
 
-    //Add active class to next turn.
-    $(`#player${playerTurn}`).addClass("active");
-    turnCounter++;
+      //Change turns.
+      playerTurn === 1 ? (playerTurn = 2) : (playerTurn = 1);
+
+      //Add active class to next turn.
+      $(`#player${playerTurn}`).addClass("active");
+      turnCounter++;
+    }
   }
-
-  }
-
 
   //----------------------------------------------------
   //On Dynamically created boxes, create a mouseover event for the boxes
@@ -92,17 +91,20 @@ $(document).ready(() => {
     ) {
       return false;
     }
- 
 
-    
-    let index = $(this).index();//Hold's the index of selected box.
-    turn($(this),playerTurn,index);
-    
+    let index = $(this).index(); //Hold's the index of selected box.
+    //Player 1's Turn
+    turn($(this), playerTurn, index);
+
     //Computer turn
-    if(turnCounter!==9){
+    if (turnCounter !== 9) {
       //Display an X on the first available element.
-    turn($(`ul li:nth-child(${(emptySquares[0]+1)}`),playerTurn,emptySquares[0]);
-  }
+      turn(
+        $(`ul li:nth-child(${emptySquares[0] + 1}`),
+        playerTurn,
+        emptySquares[0]
+      );
+    }
 
     //Check if the the current user has three in a row.
     for (let i = 0; i < win.length; i++) {
@@ -110,25 +112,26 @@ $(document).ready(() => {
       let player2Counter = 0;
       //Check through each of the combinations if the list meets one then the user is a winner.
       for (let j = 0; j < win[i].length; j++) {
+        //Check if arrPlayer1 has one of the winning combos
         if ($.inArray(win[i][j], arrPlayer1) !== -1) {
           player1Counter++;
-        } else if ($.inArray(win[i][j], arrPlayer2) !== -1) {
+        }//Check if arrPlayer1 has one of the winning combos
+        else if ($.inArray(win[i][j], arrPlayer2) !== -1) {
           player2Counter++;
         }
+
         if (player1Counter === 3) {
-          //Display O as Winner          
-         declareTheWinner('one','Winner');
+          //Display O as Winner
+          declareTheWinner("one", "Winner");
         } else if (player2Counter === 3) {
           //Display X as Winner
-          declareTheWinner('two','Winner');
-
+          declareTheWinner("two", "Winner");
         }
       }
     }
-    console.log(emptySquares);
-    if (emptySquares.length===0) {
-              //Display Draw Screen
-              declareTheWinner('tie','Tie');
+    if (emptySquares.length === 0) {
+      //Display Draw Screen
+      declareTheWinner("tie", "Tie");
     }
   });
 });
