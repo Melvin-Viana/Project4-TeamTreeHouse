@@ -19,6 +19,10 @@ $(document).ready(() => {
   //Empty squares/ Not yet filled
   let emptySquares = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 
+  //Name of user
+  let val = localStorage.getItem("bar");
+
+
   //Display who won the game
   function declareTheWinner(player, message) {
     $("body")
@@ -122,12 +126,12 @@ $(document).ready(() => {
         // if Player 1 has 3 numbers of the current combo.
         if (player1Counter === 3) {
           //Display O as Winner
-          declareTheWinner("one", "Winner");
+          declareTheWinner("one", `${val} is the Winner`);
         } 
          // if Player 2 has 3 numbers of the current combo.
         else if (player2Counter === 3) {
           //Display X as Winner
-          declareTheWinner("two", "Winner");
+          declareTheWinner("two", "Computer is the Winner");
         }
       }
     }
